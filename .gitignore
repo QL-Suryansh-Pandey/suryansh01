@@ -1,0 +1,8 @@
+node_modules/
+reports/
+test-results/
+login/test-data/users.json
+signup/test-data/users.json
+.env
+.env.*
+!.env.example

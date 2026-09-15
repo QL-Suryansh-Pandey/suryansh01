@@ -1,0 +1,16 @@
+{
+  "name": "playwright-automation",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "report:open": "playwright show-report reports/html",
+    "report:email": "node scripts/email-report.js"
+  },
+  "devDependencies": {
+    "@playwright/mcp": "^0.0.80",
+    "@playwright/test": "^1.63.0",
+    "nodemailer": "latest"
+  }
+}
