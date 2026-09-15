@@ -3,6 +3,7 @@ reports/
 test-results/
 login/test-data/users.json
 signup/test-data/users.json
+selenium_automation/playwright-automation/test-data/users.json
 .env
 .env.*
 !.env.example
