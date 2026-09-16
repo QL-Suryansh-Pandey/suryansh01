@@ -7,6 +7,7 @@ class SignupPage {
     this.designationInput = page.locator("#designation");
     this.passwordInput = page.locator("#password");
     this.continueButton = page.locator("button[type='submit']");
+    this.passwordError = page.getByText(/password must be at least/i);
   }
 
   async open() {

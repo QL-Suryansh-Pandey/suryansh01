@@ -4,6 +4,7 @@ class LoginPage {
     this.usernameInput = page.getByRole('textbox', { name: 'Email' });
     this.passwordInput = page.getByRole('textbox', { name: 'Password' });
     this.loginButton = page.getByRole('button', { name: 'Log in' });
+    this.errorToast = page.getByText(/error/i);
   }
 
   async open() {
