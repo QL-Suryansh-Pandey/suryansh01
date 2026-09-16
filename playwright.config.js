@@ -11,11 +11,12 @@ module.exports = defineConfig({
 		['html', { outputFolder: 'reports/html', open: 'never' }],
 		['json', { outputFile: 'reports/results.json' }],
 		['junit', { outputFile: 'reports/results.xml' }],
+		['./scripts/extent-reporter.js', { outputFile: 'reports/extent/index.html' }],
 	],
 	use: {
 		baseURL: process.env.BASE_URL || 'http://localhost:3000',
 		trace: 'on-first-retry',
-		screenshot: 'only-on-failure',
+		screenshot: 'on',
 		video: 'retain-on-failure',
 	},
 	projects: [
