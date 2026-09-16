@@ -1,13 +1,13 @@
 class LoginPage {
   constructor(page) {
     this.page = page;
-    this.usernameInput = page.locator("xpath=//input[@id='email']");
-    this.passwordInput = page.locator("xpath=//input[@id='password']");
-    this.loginButton = page.locator("xpath=//button[@type='submit']");
+    this.usernameInput = page.getByRole('textbox', { name: 'Email' });
+    this.passwordInput = page.getByRole('textbox', { name: 'Password' });
+    this.loginButton = page.getByRole('button', { name: 'Log in' });
   }
 
   async open() {
-    await this.page.goto('/login');
+    await this.page.goto('/login', { waitUntil: 'domcontentloaded' });
   }
 
   async login(username, password) {
