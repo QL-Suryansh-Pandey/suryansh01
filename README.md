@@ -55,6 +55,17 @@ server. See `.env.example`.
   It expects a `BASE_URL` build parameter and a Jenkins "Username with
   password" credential named `login-test-user`.
 
+## Known limitations
+
+- **Signup test accounts accumulate.** Every run of `signup/tests/signup.spec.js`
+  creates a real workspace/account on `BASE_URL` (staging). The app currently
+  has no delete-account API or admin panel to clean these up, so there's no
+  automated teardown. Generated accounts are identifiable by their `QA Test `
+  full-name prefix, `qa.<suffix>@quokkalabs.com` email, and `Quokka Labs `
+  company-name prefix (see `signup/utils/testData.js`), which at least makes
+  them easy to find for a manual/periodic purge once deletion is possible.
+  Revisit this once the app exposes a way to delete a workspace.
+
 ## Project layout
 
 Each app module (`login`, `signup`) is self-contained: `pages/` (page
