@@ -1,12 +1,15 @@
-const users = require('../test-data/users.json');
+function uniqueSuffix() {
+  return `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
+}
 
 function getNewUser() {
+  const suffix = uniqueSuffix();
   return {
-    firstName: process.env.TEST_FIRST_NAME || users.newUser.firstName,
-    lastName: process.env.TEST_LAST_NAME || users.newUser.lastName,
-    email: process.env.TEST_EMAIL || users.newUser.email,
-    password: process.env.TEST_PASSWORD || users.newUser.password,
-    confirmPassword: process.env.TEST_PASSWORD || users.newUser.confirmPassword,
+    fullName: process.env.TEST_FULL_NAME || `QA Test ${suffix}`,
+    email: process.env.TEST_EMAIL || `qa.${suffix}@quokkalabs.com`,
+    companyName: process.env.TEST_COMPANY_NAME || `Quokka Labs ${suffix}`,
+    designation: process.env.TEST_DESIGNATION || 'QA Engineer',
+    password: process.env.TEST_PASSWORD || `Qa@${suffix}1`,
   };
 }
 
