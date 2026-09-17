@@ -43,6 +43,7 @@ class ExtentReporter {
   onTestEnd(test, result) {
     this.tests.push({
       title: test.title,
+      browser: test.titlePath()[1] || '',
       file: path.relative(process.cwd(), test.location.file),
       status: result.status,
       duration: result.duration,
@@ -81,6 +82,7 @@ class ExtentReporter {
     const testRows = this.tests.map((t) => `
       <tr class="${t.status === 'passed' ? 'row-pass' : 'row-fail'}">
         <td>${escapeHtml(t.title)}</td>
+        <td>${escapeHtml(t.browser)}</td>
         <td>${escapeHtml(t.file)}</td>
         <td>${t.status === 'passed' ? 'Pass' : 'Fail'}</td>
         <td>${formatDuration(t.duration)}</td>
@@ -116,8 +118,8 @@ class ExtentReporter {
   .legend .fail { background: #e74c3c; }
   table { width: 100%; border-collapse: collapse; margin-top: 12px; }
   th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #eee; font-size: 13px; }
-  tr.row-pass td:nth-child(3) { color: #2ecc71; font-weight: 600; }
-  tr.row-fail td:nth-child(3) { color: #e74c3c; font-weight: 600; }
+  tr.row-pass td:nth-child(4) { color: #2ecc71; font-weight: 600; }
+  tr.row-fail td:nth-child(4) { color: #e74c3c; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -163,7 +165,7 @@ class ExtentReporter {
     <div class="panel" style="margin-top:16px;">
       <h3>Tests</h3>
       <table>
-        <thead><tr><th>Title</th><th>File</th><th>Status</th><th>Duration</th><th>Error</th></tr></thead>
+        <thead><tr><th>Title</th><th>Browser</th><th>File</th><th>Status</th><th>Duration</th><th>Error</th></tr></thead>
         <tbody>${testRows}</tbody>
       </table>
     </div>

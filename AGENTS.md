@@ -19,8 +19,8 @@
 ## Environment And Test Data
 
 - The config uses `BASE_URL`, defaulting to `http://localhost:3000`; it does not start an application server. Set `BASE_URL` explicitly when testing a deployed or locally running application.
-- Login data can come from `TEST_USERNAME` and `TEST_PASSWORD` or [login/test-data/users.json](login/test-data/users.json). Signup data can come from `TEST_FIRST_NAME`, `TEST_LAST_NAME`, `TEST_EMAIL`, and `TEST_PASSWORD` or [signup/test-data/users.json](signup/test-data/users.json).
-- Tests skip when required environment or fixture data is absent. Treat a green run with skipped tests as incomplete coverage and inspect the output before reporting success.
+- Login data can come from `TEST_USERNAME` and `TEST_PASSWORD` or [login/test-data/users.json](login/test-data/users.json). Signup data is generated fresh on every run (unique full name, email, company, and a password meeting the site's complexity rules — see [signup/utils/testData.js](signup/utils/testData.js)); override any field with `TEST_FULL_NAME`, `TEST_EMAIL`, `TEST_COMPANY_NAME`, `TEST_DESIGNATION`, or `TEST_PASSWORD` if a fixed value is needed. There is no `signup/test-data/users.json` fixture.
+- Login tests skip when required environment or fixture data is absent; the signup test only skips when `BASE_URL` is unset. Treat a green run with skipped tests as incomplete coverage and inspect the output before reporting success.
 - Never add real credentials, SMTP passwords, tokens, or other secrets to tracked fixture files. Prefer environment variables and replace any exposed values immediately.
 
 ## Change Conventions
